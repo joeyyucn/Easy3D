@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# vs intelligent related files
+*.sdf
+*.suo
+*.user
+*.opensdf
+*.suo
+
+# ipch folder
+/ipch/
+/Debug/
+Debug

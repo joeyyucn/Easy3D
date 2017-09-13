@@ -1,0 +1,15 @@
+# mycube1 8 vertices and 1 polygons 
+mycube1 8 1
+
+# vertices
+1 1 -1
+1 1 1
+-1 1 1
+-1 1 -1
+1 -1 -1
+1 -1 1
+-1 -1 1
+-1 -1 -1
+
+# polygons
+0x8fff 3 1 2 3

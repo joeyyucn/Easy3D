@@ -1,11 +1,38 @@
 // Easy3D.cpp : Defines the entry point for the application.
 //
 
+#include <stdio.h>
 #include "stdafx.h"
 #include "Easy3D.h"
+#include "com_types.h"
+#include "file_plg.h"
 
+
+
+void main()
+{
+	printf("hello world");
+	object4dv1 obj;
+	vector4d trans, rotate, scale;
+	trans.x = 0;
+	trans.y = 0;
+	trans.z = 0;
+	trans.w = 0;
+
+	rotate.x = 0;
+	rotate.y = 0;
+	rotate.z = 0;
+	rotate.w = 0;
+
+	scale.x = 1;
+	scale.y = 1;
+	scale.y = 1;
+	scale.z = 1;
+
+	plg_load_object4dv1(&obj, "cube.plg", &trans, &rotate, &scale);
+}
+/*
 #define MAX_LOADSTRING 100
-
 // Global Variables:
 HINSTANCE hInst;								// current instance
 TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
@@ -24,6 +51,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 {
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
+
 
  	// TODO: Place code here.
 	MSG msg;
@@ -180,3 +208,4 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 	}
 	return (INT_PTR)FALSE;
 }
+*/
