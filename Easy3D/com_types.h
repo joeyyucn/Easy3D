@@ -1,41 +1,44 @@
 #ifndef _COM_TYPES_H_INCLUDED_
 #define _COM_TYPES_H_INCLUDED_
 
-typedef struct vector2d
+typedef struct VECTOR2D_TYP
 {
-	float x, y;
+	union
+	{
+		float m[2];
+		struct  
+		{
+			float x, y;
+		};
+	};
 }
-vector2d, *vector2d_ptr;
+POINT2D, VECTOR2D, *POINT2D_PTR, *VECTOR2D_PTR;
 
-typedef struct vector3d
+typedef struct VECTOR3D_TYP
 {
-	float x, y, z;
+	union
+	{
+		float m[3];
+		struct
+		{
+			float x, y, z;
+		};
+	};
 }
-vector3d, *vector3d_ptr;
+POINT3D, VECTOR3D, *POINT3D_PTR, *VECTOR3D_PTR;
 
-typedef struct vector4d
+typedef struct VECTOR4D_TYP
 {
-	float x, y, z, w;
+	union
+	{
+		float m[4];
+		struct  
+		{
+			float x, y, z, w;
+		};
+	};
 }
-vector4d, *vector4d_ptr;
-
-typedef struct point2d
-{
-	float x, y;
-}
-point2d, *point2d_ptr;
-
-typedef struct point3d
-{
-	float x, y, z;
-}
-point3d, *point3d_ptr;
-
-typedef struct point4d
-{
-	float x, y, z, w;
-}
-point4d, *point4d_ptr;
+POINT4D, VECTOR4D, *POINT4D_PTR, *VECTOR4D_PTR;
 
 // polygon and face state
 #define POLY4DV1_STATE_ACTIVE	0x0001
@@ -61,9 +64,10 @@ typedef struct POLY4DV1_TYP
 	int state;
 	int color;
 	
-	point4d_ptr vlist;
+	POINT4D_PTR vlist;
 	int vindex[3];
-} poly4dv1, *poly4dv1_ptr;
+} 
+POLY4DV1, *POLY4DV1_PTR;
 
 typedef struct POLYF4DV1_TYP
 {
@@ -71,12 +75,29 @@ typedef struct POLYF4DV1_TYP
 	int state;
 	int color;
 
-	point4d vlist[3];
-	point4d tlist[3];
+	POINT4D vlist[3];
+	POINT4D tlist[3];
 
 	POLYF4DV1_TYP* pPrev;
 	POLYF4DV1_TYP* pNext;
-} polyf4dv1, polyf4dv1_ptr;
+} 
+POLYF4DV1, *POLYF4DV1_PTR;
+
+typedef struct MATRIX4X4_TYP
+{
+	union
+	{
+		float m[4][4];
+		struct  
+		{
+			float m00, m01, m02, m03;
+			float m10, m11, m12, m13;
+			float m20, m21, m22, m23;
+			float m30, m31, m32, m33;
+		};
+	};
+}
+MATRIX4X4, *MATRIX4X4_PTR;
 
 #define OBJECT4DV1_MAX_VERTICES		256
 #define OBJECT4DV1_MAX_POLYS		128
@@ -92,18 +113,18 @@ typedef struct OBJECT4DV1_TYP
 	float avg_radius;
 	float max_radius;
 
-	point4d world_pos;
-	vector4d dir;
-	vector4d ux, uy, uz;
+	POINT4D world_pos;
+	VECTOR4D dir;
+	VECTOR4D ux, uy, uz;
 
 	int num_vertices;
-	point4d vlist_local[OBJECT4DV1_MAX_VERTICES];
-	point4d vlist_trans[OBJECT4DV1_MAX_VERTICES];
+	POINT4D vlist_local[OBJECT4DV1_MAX_VERTICES];
+	POINT4D vlist_trans[OBJECT4DV1_MAX_VERTICES];
 	
 	int num_polys;
-	poly4dv1 plist[OBJECT4DV1_MAX_POLYS];
+	POLY4DV1 plist[OBJECT4DV1_MAX_POLYS];
 
-} object4dv1, *object4dv1_ptr;
+} OBJECT4DV1, *OBJECT4DV1_PTR;
 
 #define RENDERLIST4DV1_MAX_POLYS	256
 typedef struct RENDERLIST4DV1_TYP
@@ -111,9 +132,10 @@ typedef struct RENDERLIST4DV1_TYP
 	int state;
 	int attr;
 
-	polyf4dv1_ptr poly_ptrs[RENDERLIST4DV1_MAX_POLYS];
-	polyf4dv1_ptr poly_data[RENDERLIST4DV1_MAX_POLYS];
+	POLYF4DV1_PTR poly_ptrs[RENDERLIST4DV1_MAX_POLYS];
+	POLYF4DV1 poly_data[RENDERLIST4DV1_MAX_POLYS];
 	int num_polys;
-} renderlist4dv1, *renderlist4dv1_ptr;
+} 
+RENDERLIST4DV1, *RENDERLIST4DV1_PTR;
 
 #endif

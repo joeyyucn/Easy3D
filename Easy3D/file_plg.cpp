@@ -38,7 +38,7 @@ static char* plg_get_line(char* buffer, int maxlength, FILE* fp)
 		for(length = strlen(buffer); isSpace(buffer[index]);index++);
 
 		// blank line
-		if(index == (length-1))
+		if(index == length || buffer[index] == '\n')
 			continue;
 
 		// comment line
@@ -49,7 +49,7 @@ static char* plg_get_line(char* buffer, int maxlength, FILE* fp)
 	}
 }
 
-static void compute_object4dv1_radius(object4dv1_ptr obj)
+static void compute_OBJECT4DV1_radius(OBJECT4DV1_PTR obj)
 {
 	if(obj->num_vertices == 0)
 	{
@@ -59,12 +59,12 @@ static void compute_object4dv1_radius(object4dv1_ptr obj)
 	{
 		float total_distance = 0;
 		float radius, max_radius = 0;
-		point4d_ptr point = NULL;
+		POINT4D_PTR point = NULL;
 		for(int i = 0; i < obj->num_vertices; i++)
 		{
 			point = &obj->vlist_local[i];
 
-			radius = sqrt(point->x * point->x + point->y * point->y + point->z * point->z);
+			radius = sqrtf(point->x * point->x + point->y * point->y + point->z * point->z);
 			if(radius > max_radius)
 				max_radius = radius;
 			total_distance += radius;
@@ -75,7 +75,7 @@ static void compute_object4dv1_radius(object4dv1_ptr obj)
 	}
 }
 
-int plg_load_object4dv1(object4dv1_ptr obj, char* filename, vector4d_ptr pos, vector4d_ptr rotate, vector4d_ptr scale)
+int plg_load_OBJECT4DV1(OBJECT4DV1_PTR obj, char* filename, VECTOR4D_PTR pos, VECTOR4D_PTR rotate, VECTOR4D_PTR scale)
 {
 	FILE* pFile = NULL;
 	char buffer[PLG_MAX_LINE_LENGTH];
@@ -90,11 +90,12 @@ int plg_load_object4dv1(object4dv1_ptr obj, char* filename, vector4d_ptr pos, ve
 	}
 
 	memset(buffer, 0, PLG_MAX_LINE_LENGTH);
-
+	memset(obj, 0, sizeof(OBJECT4DV1));
 	// world pos
 	obj->world_pos.x = pos->x;
 	obj->world_pos.y = pos->y;
 	obj->world_pos.z = pos->z;
+	obj->world_pos.w = pos->w;
 
 	obj->state = OBJECT4DV1_STATE_ACTIVE | OBJECT4DV1_STATE_VISIBLE;
 
@@ -125,10 +126,10 @@ int plg_load_object4dv1(object4dv1_ptr obj, char* filename, vector4d_ptr pos, ve
 	}
 
 	// average radius and max radius
-	compute_object4dv1_radius(obj);
+	compute_OBJECT4DV1_radius(obj);
 
 	// polygons
-	poly4dv1_ptr pPoly = NULL;
+	POLY4DV1_PTR pPoly = NULL;
 	for(int polygon = 0; polygon < obj->num_polys; polygon++)
 	{
 		pPoly = &obj->plist[polygon];

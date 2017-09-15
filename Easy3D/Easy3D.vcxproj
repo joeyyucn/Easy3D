@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="com_types.h" />
     <ClInclude Include="Easy3D.h" />
+    <ClInclude Include="emath.h" />
     <ClInclude Include="file_plg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -88,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Easy3D.cpp" />
+    <ClCompile Include="emath.cpp" />
     <ClCompile Include="file_plg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

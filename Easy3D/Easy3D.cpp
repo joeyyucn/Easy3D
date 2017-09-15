@@ -12,24 +12,13 @@
 void main()
 {
 	printf("hello world");
-	object4dv1 obj;
-	vector4d trans, rotate, scale;
-	trans.x = 0;
-	trans.y = 0;
-	trans.z = 0;
-	trans.w = 0;
+	OBJECT4DV1 obj;
+	VECTOR4D trans = {0, 0, 0, 1};
+	VECTOR4D rotate = {0, 0, 0, 1};
+	VECTOR4D scale = {1, 1, 1, 1};
 
-	rotate.x = 0;
-	rotate.y = 0;
-	rotate.z = 0;
-	rotate.w = 0;
-
-	scale.x = 1;
-	scale.y = 1;
-	scale.y = 1;
-	scale.z = 1;
-
-	plg_load_object4dv1(&obj, "cube.plg", &trans, &rotate, &scale);
+	obj.id = 0;
+	plg_load_OBJECT4DV1(&obj, "cube.plg", &trans, &rotate, &scale);
 }
 /*
 #define MAX_LOADSTRING 100

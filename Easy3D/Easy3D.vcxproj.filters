@@ -42,6 +42,9 @@
     <ClInclude Include="com_types.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="emath.h">
+      <Filter>core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -52,6 +55,9 @@
     </ClCompile>
     <ClCompile Include="file_plg.cpp">
       <Filter>plg</Filter>
+    </ClCompile>
+    <ClCompile Include="emath.cpp">
+      <Filter>core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

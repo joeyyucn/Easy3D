@@ -2,5 +2,5 @@
 #define _FILE_PLG_INCLUDED_
 #include "com_types.h"
 
-int plg_load_object4dv1(object4dv1_ptr obj, char* filename, vector4d_ptr pos, vector4d_ptr rotate, vector4d_ptr scale);
+int plg_load_OBJECT4DV1(OBJECT4DV1_PTR obj, char* filename, VECTOR4D_PTR pos, VECTOR4D_PTR rotate, VECTOR4D_PTR scale);
 #endif
