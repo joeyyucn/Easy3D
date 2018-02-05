@@ -45,6 +45,9 @@
     <ClInclude Include="emath.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="ecamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,6 +60,9 @@
       <Filter>plg</Filter>
     </ClCompile>
     <ClCompile Include="emath.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="ecamera.cpp">
       <Filter>core</Filter>
     </ClCompile>
   </ItemGroup>
