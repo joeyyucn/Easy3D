@@ -220,3 +220,9 @@ void Build_CAM4DV1_Matrix_UVN( CAMERA4DV1_PTR cam, int uvn_mode )
 
 	MAT_MUL_4X4( &mt, &mt_uvn, &cam->mcam );
 }
+
+void Build_CAM4DV1_To_Perspective_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt );
+{
+	// MAT_INIT_4X4( &mt, 
+
+}
