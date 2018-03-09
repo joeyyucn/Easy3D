@@ -1,44 +1,5 @@
-#ifndef _COM_TYPES_H_INCLUDED_
-#define _COM_TYPES_H_INCLUDED_
-
-typedef struct VECTOR2D_TYP
-{
-	union
-	{
-		float m[2];
-		struct  
-		{
-			float x, y;
-		};
-	};
-}
-POINT2D, VECTOR2D, *POINT2D_PTR, *VECTOR2D_PTR;
-
-typedef struct VECTOR3D_TYP
-{
-	union
-	{
-		float m[3];
-		struct
-		{
-			float x, y, z;
-		};
-	};
-}
-POINT3D, VECTOR3D, *POINT3D_PTR, *VECTOR3D_PTR;
-
-typedef struct VECTOR4D_TYP
-{
-	union
-	{
-		float m[4];
-		struct  
-		{
-			float x, y, z, w;
-		};
-	};
-}
-POINT4D, VECTOR4D, *POINT4D_PTR, *VECTOR4D_PTR;
+#pragma once
+#include "common_vector.h"
 
 // polygon and face state
 #define POLY4DV1_STATE_ACTIVE	0x0001
@@ -83,34 +44,12 @@ typedef struct POLYF4DV1_TYP
 } 
 POLYF4DV1, *POLYF4DV1_PTR;
 
-typedef struct MATRIX4X4_TYP
-{
-	union
-	{
-		float m[4][4];
-		struct  
-		{
-			float m00, m01, m02, m03;
-			float m10, m11, m12, m13;
-			float m20, m21, m22, m23;
-			float m30, m31, m32, m33;
-		};
-	};
-}
-MATRIX4X4, *MATRIX4X4_PTR;
-
-typedef struct PLANE3D_TYP
-{
-	POINT3D p0;
-	VECTOR3D n;
-}
-PLANE3D, *PLANE3D_PTR;
-
 #define OBJECT4DV1_MAX_VERTICES		256
 #define OBJECT4DV1_MAX_POLYS		128
 
 #define OBJECT4DV1_STATE_ACTIVE		0x0001
 #define OBJECT4DV1_STATE_VISIBLE	0x0002
+#define OBJECT4DV1_STATE_CULLED		0x0004
 typedef struct OBJECT4DV1_TYP
 {
 	int id;
@@ -144,5 +83,3 @@ typedef struct RENDERLIST4DV1_TYP
 	int num_polys;
 } 
 RENDERLIST4DV1, *RENDERLIST4DV1_PTR;
-
-#endif

@@ -194,7 +194,6 @@ int plg_load_OBJECT4DV1(OBJECT4DV1_PTR obj, char* filename, VECTOR4D_PTR pos, VE
 			break;
 		}
 	}
-
 	fclose(pFile);
 	return 1;
 }

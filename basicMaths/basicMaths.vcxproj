@@ -80,6 +80,7 @@
     <ClInclude Include="common_vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="common.cpp" />
     <ClCompile Include="matrix.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

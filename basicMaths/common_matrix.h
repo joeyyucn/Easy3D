@@ -54,9 +54,9 @@ const MATRIX2X2 IMAT_2X2 = { 1, 0, 0, 1 };
 #define MAT_ZERO_3X3(m)	{ memset( (void*)m, 0, sizeof(MATRIX3X3) );}
 #define MAT_ZERO_4X4(m)	{ memset( (void*)m, 0, sizeof(MATRIX4X4) );}
 
-#define MAT_IDENTITY_2X2(m) { memcpy( (void*)m, (void*)IMAT_2X2, sizeof(MATRIX2X2) ); }
-#define MAT_IDENTITY_3X3(m) { memcpy( (void*)m, (void*)IMAT_3X3, sizeof(MATRIX3X3) ); }
-#define MAT_IDENTITY_4X4(m) { memcpy( (void*)m, (void*)IMAT_4X4, sizeof(MATRIX4X4) ); }
+#define MAT_IDENTITY_2X2(m) { memcpy( (void*)m, (void*)&IMAT_2X2, sizeof(MATRIX2X2) ); }
+#define MAT_IDENTITY_3X3(m) { memcpy( (void*)m, (void*)&IMAT_3X3, sizeof(MATRIX3X3) ); }
+#define MAT_IDENTITY_4X4(m) { memcpy( (void*)m, (void*)&IMAT_4X4, sizeof(MATRIX4X4) ); }
 
 #define MAT_COPY_2X2( src_mat, dest_mat ) { memcpy( (void*)dest_mat, (void*)src_mat, sizeof(MATRIX2X2) ); }
 #define MAT_COPY_4X4( src_mat, dest_mat ) { memcpy( (void*)dest_mat, (void*)src_mat, sizeof(MATRIX4X4) ); }

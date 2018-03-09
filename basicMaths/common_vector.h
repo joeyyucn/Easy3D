@@ -1,5 +1,7 @@
 #pragma once
 #include "common.h"
+#include <math.h>
+#include "common_matrix.h"
 ////////////////////////////////////////////////////////////////////////////////
 //	VECTOR & POINT
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,7 +34,7 @@ typedef struct VECTOR2DI_TYP
 	int x, y;
 }VECTOR2DI, *VECTOR2DI_PTR;
 
-typedef struct VECTOR2DF_PTR
+typedef struct VECTOR2DF_TYP
 {
 	float x, y;
 }VECTOR2DF, *VECTOR2DF_PTR;
@@ -256,6 +258,14 @@ FORCE_INLINE void VECTOR3D_CROSS( VECTOR3D_PTR va, VECTOR3D_PTR vb, VECTOR3D_PTR
 	cross->z = va->x * vb->y - va->y * vb->x;
 }
 
+FORCE_INLINE void VECTOR4D_CROSS( VECTOR4D_PTR va, VECTOR4D_PTR vb, VECTOR4D_PTR cross )
+{
+	cross->x = va->y * vb->z - va->z * vb->y;
+	cross->y = va->z * vb->x - va->x * vb->z;
+	cross->z = va->x * vb->y - va->y * vb->x;
+	cross->w = 1.0f;
+}
+
 FORCE_INLINE float VECTOR2D_LENGTH( VECTOR2D_PTR v )
 {
 	return sqrt( v->x * v->x + v->y * v->y );
@@ -347,4 +357,15 @@ FORCE_INLINE float VECTOR2D_COSTH( VECTOR2D_PTR va, VECTOR2D_PTR vb )
 FORCE_INLINE float VECTOR3D_COSTH( VECTOR3D_PTR va, VECTOR3D_PTR vb )
 {
 	return VECTOR3D_DOT( va, vb ) / ( VECTOR3D_LENGTH( va ) * VECTOR3D_LENGTH( vb ) );
+}
+
+FORCE_INLINE void VECTOR4D_Mul_MATRIX4X4( VECTOR4D_PTR vect, MATRIX4X4_PTR mt, VECTOR4D_PTR dest )
+{
+	for ( int i = 0; i < 4; i++ )
+	{
+		for ( int j = 0; j < 4; j++ )
+		{
+			dest->M[i] += vect->M[j] * mt->M[j*4 + i];
+		}
+	}
 }

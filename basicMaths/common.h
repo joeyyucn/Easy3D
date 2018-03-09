@@ -33,3 +33,9 @@ FORCE_INLINE float I_fsel( float comparand, float valGE, float valLT )
 {
 	return comparand >= 0 ? valGE : valLT;
 }
+
+#define MAX_PRINT_MSG	1024
+void Com_Printf( const char* fmt, ... );
+
+#define SET_BIT(va, b) ( va |= b )
+#define RESET_BIT(va, b) ( va ^= b )

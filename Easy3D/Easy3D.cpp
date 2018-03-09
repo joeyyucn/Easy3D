@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include "stdafx.h"
 #include "Easy3D.h"
-#include "com_types.h"
+#include "common_vector.h"
+#include "render_types.h"
 #include "file_plg.h"
 
 
