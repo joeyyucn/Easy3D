@@ -83,3 +83,20 @@ typedef struct RENDERLIST4DV1_TYP
 	int num_polys;
 } 
 RENDERLIST4DV1, *RENDERLIST4DV1_PTR;
+
+typedef struct RECTV1_TYP
+{
+	union
+	{
+		int M[4];
+		struct 
+		{
+			int left, right, top, bottom;
+		};
+	};
+}
+RECTV1, *RECTV1_PTR;
+
+void Reset_RENDERLIST4DV1( RENDERLIST4DV1_PTR render_list );
+void Reset_OBJECT4DV1( OBJECT4DV1_PTR obj );
+int Insert_OBJECT4DV1_RENDERLIST4DV1( RENDERLIST4DV1_PTR render_list, OBJECT4DV1_PTR obj );

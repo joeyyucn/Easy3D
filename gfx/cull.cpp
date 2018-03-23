@@ -41,24 +41,6 @@ int Cull_OBJECT4DV1( OBJECT4DV1_PTR obj, CAMERA4DV1_PTR cam, int cull_mode )
 	return 0;
 }
 
-void Reset_OBJECT4DV1( OBJECT4DV1_PTR obj )
-{
-	RESET_BIT( obj->state, OBJECT4DV1_STATE_CULLED );
-	
-	for ( int poly = 0; poly < obj->num_polys; poly++ )
-	{
-		POLY4DV1_PTR curr_poly = &obj->plist[poly];
-
-		if ( !( curr_poly->state & POLY4DV1_STATE_ACTIVE ) )
-		{
-			continue;
-		}
-
-		RESET_BIT( curr_poly->state, POLY4DV1_STATE_CLIPPED );
-		RESET_BIT( curr_poly->state, POLY4DV1_STATE_BACKFACE );
-	}
-}
-
 void Remove_Backfaces_OBJECT4DV1( OBJECT4DV1_PTR obj, CAMERA4DV1_PTR cam )
 {
 	if ( obj->state & OBJECT4DV1_STATE_CULLED )

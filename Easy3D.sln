@@ -20,6 +20,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gfx", "gfx\gfx.vcxproj", "{
 		{CFBB3B21-48B4-4C2B-A049-A1A386102BF4} = {CFBB3B21-48B4-4C2B-A049-A1A386102BF4}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D2DSample", "D2DSample\D2DSample.vcxproj", "{C5B993AE-DED9-45C1-AB5B-D4E0C97091EC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CFBB3B21-48B4-4C2B-A049-A1A386102BF4} = {CFBB3B21-48B4-4C2B-A049-A1A386102BF4}
+		{B09EF979-533E-4B63-84DB-71A2AA2C57E8} = {B09EF979-533E-4B63-84DB-71A2AA2C57E8}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -42,6 +48,10 @@ Global
 		{B09EF979-533E-4B63-84DB-71A2AA2C57E8}.Debug|Win32.Build.0 = Debug|Win32
 		{B09EF979-533E-4B63-84DB-71A2AA2C57E8}.Release|Win32.ActiveCfg = Release|Win32
 		{B09EF979-533E-4B63-84DB-71A2AA2C57E8}.Release|Win32.Build.0 = Release|Win32
+		{C5B993AE-DED9-45C1-AB5B-D4E0C97091EC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C5B993AE-DED9-45C1-AB5B-D4E0C97091EC}.Debug|Win32.Build.0 = Debug|Win32
+		{C5B993AE-DED9-45C1-AB5B-D4E0C97091EC}.Release|Win32.ActiveCfg = Release|Win32
+		{C5B993AE-DED9-45C1-AB5B-D4E0C97091EC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

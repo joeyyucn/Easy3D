@@ -72,3 +72,7 @@ enum
 void Build_CAM4DV1_Matrix_UVN( CAMERA4DV1_PTR cam, int uvn_mode );
 
 void Build_CAM4DV1_To_Perspective_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt );
+
+void Build_Perspective_To_Screen_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt );
+
+void Build_Perspective_To_Screen_4D_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt );

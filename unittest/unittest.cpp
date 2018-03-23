@@ -4,12 +4,14 @@
 #include "stdafx.h"
 #include <assert.h>
 #include <math.h>
+#include <Windows.h>
 #include "common.h"
 #include "common_vector.h"
 #include "camera.h"
-
+#include <stddef.h>
 #pragma comment( lib, "basicMaths.lib" )
 #pragma comment( lib, "gfx.lib" )
+#pragma pack(1)
 
 float det( float* m, int rows )
 {
@@ -37,24 +39,90 @@ float det( float* m, int rows )
 	return fdet;
 }
 
+//#pragma pack(1) 
+typedef unsigned int uint;
+union  UnionStruct
+{
+	/*
+	struct
+	{
+		uint x : 8;
+		uint y : 16;
+		uint z;
+	};
+	struct
+	{
+		uint c : 1;
+		uint d : 3;
+		uint e : 4;
+	};*/
+	
+	struct
+	{
+		uint a;
+	};
+
+	struct
+	{
+		uint x: 1;
+		uint y: 1;
+	};
+
+	uint b;
+};
+
+struct BitField
+{
+	unsigned char alpha : 1;
+	/////
+	uint b: 1;
+	uint a: 2;
+	///
+	short beta: 1;
+	///
+	
+	
+	
+};
+
+class A
+{
+public:
+	uint a: 2;
+	uint b: 2;
+};
+union MyUnion
+{
+	union MyUnion1
+	{
+		struct MyStruct
+		{
+			uint i : 1;
+		};
+	};
+
+	struct 
+	{
+		uint a : 8;
+	};
+};
+
+struct TestOffsetStruct
+{
+	int i;
+	int j;
+};
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//float m[] = { 1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f };
-	float m[] = { 5, 3, 3, 4, 2, 3, 5, 7, 4};
-	printf("%f \n", det(m, 3));
-	VECTOR3D n = { 0, 0, 1 };
-	VECTOR3D v = { 0, 1, 0 };
-	VECTOR3D u;
-	VECTOR3D_CROSS( &n, &v, &u );
+	BitField b;
+	b.alpha = 0x1;
+	b.b = 0x0;
+	b.a = 0x1;
+	b.beta = 0x1;
 
-	CAMERA4DV1 cam_euler;
-	VECTOR4D pos = { 0, 0, 0, 1 };
-	VECTOR4D dir = { 0, 0, 1, 1 };
-	Init_CAMERA4DV1( &cam_euler, CAMERATYPE_EULER, &pos, &dir, NULL, 50, 500, 90, 400, 400 );
-	
-	CAMERA4DV1 cam_uvn;
-	VECTOR4D target = { 0, 0, 1, 1 };
-	Init_CAMERA4DV1( &cam_uvn, CAMERATYPE_UVN, &pos, &dir,  &target, 50, 500, 90, 640, 480 );
+	uint c = b.a;
+	int size = sizeof( MyUnion );
+	size = GetLargePageMinimum();
 	return 0;
 }
 

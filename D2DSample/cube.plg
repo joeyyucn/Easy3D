@@ -1,0 +1,37 @@
+# mycube1 8 vertices and 1 polygons 
+mycube1 8 12
+
+# vertices
+1 1 -1
+1 1 1
+-1 1 1
+-1 1 -1
+1 -1 -1
+1 -1 1
+-1 -1 1
+-1 -1 -1
+
+# polygons
+# upper face
+0x8fff 3 0 2 1
+0x8fff 3 3 2 0
+
+# bottom face
+0x8fff 3 4 5 7
+0x8fff 3 7 5 6
+
+# left face
+0x8fff 3 7 6 2
+0x8fff 3 3 7 2
+
+# right face
+0x8fff 3 0 1 4
+0x8fff 3 5 4 1
+
+# front face
+0x8fff 3 4 3 0
+0x8fff 3 7 3 4
+
+# back face
+0x8fff 3 2 6 1
+0x8fff 3 5 1 6

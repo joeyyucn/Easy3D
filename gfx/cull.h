@@ -9,8 +9,6 @@
 
 int Cull_OBJECT4DV1( OBJECT4DV1_PTR obj, CAMERA4DV1_PTR cam, int cull_mode );
 
-void Reset_OBJECT4DV1( OBJECT4DV1_PTR obj );
-
 void Remove_Backfaces_OBJECT4DV1( OBJECT4DV1_PTR obj, CAMERA4DV1_PTR cam );
 
 void Remove_Backfaces_RENDERLIST4DV1( RENDERLIST4DV1_PTR render_list, CAMERA4DV1_PTR cam );

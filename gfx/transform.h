@@ -25,3 +25,17 @@ void World_To_Camera_OBJECT4DV1( CAMERA4DV1_PTR cam, OBJECT4DV1_PTR obj );
 void World_To_Camera_RENDERLIST4DV1( CAMERA4DV1_PTR cam, RENDERLIST4DV1_PTR render_list );
 
 void Camera_To_Perspective_OBJECT4DV1( OBJECT4DV1_PTR obj, CAMERA4DV1_PTR cam );
+
+void Camera_To_Perspective_RENDERLIST4DV1( RENDERLIST4DV1_PTR render_list, CAMERA4DV1_PTR cam );
+
+void Convert_From_Homogeneous4D_OBJECT4DV1( OBJECT4DV1_PTR obj );
+
+void Convert_From_Homogeneous4D_RENDERLIST4DV1( RENDERLIST4DV1_PTR render );
+
+void Perspective_To_Screen_OBJECT4DV1( OBJECT4DV1_PTR obj, CAMERA4DV1_PTR cam );
+
+void Perspective_To_Screen_RENDERLIST4DV1( RENDERLIST4DV1_PTR render_list, CAMERA4DV1_PTR cam );
+
+void Camera_To_Perspective_Screen_OBJECT4DV1( OBJECT4DV1_PTR obj, CAMERA4DV1_PTR cam );
+
+void Camera_To_Perspective_Screen_RENDERLIST4DV1( RENDERLIST4DV1_PTR render_list, CAMERA4DV1_PTR cam );

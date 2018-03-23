@@ -221,8 +221,36 @@ void Build_CAM4DV1_Matrix_UVN( CAMERA4DV1_PTR cam, int uvn_mode )
 	MAT_MUL_4X4( &mt, &mt_uvn, &cam->mcam );
 }
 
-void Build_CAM4DV1_To_Perspective_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt );
+void Build_CAM4DV1_To_Perspective_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt )
 {
-	// MAT_INIT_4X4( &mt, 
-
+	MAT_INIT_4X4( mt, 
+		cam->view_dist, 0, 0, 0,
+		0, cam->view_dist * cam->aspect_ratio, 0, 0,
+		0, 0, 1, 1, // THIS IS HOW W TAKE EFFECT.
+		0, 0, 0, 0 );
 }
+
+void Build_Perspective_To_Screen_4D_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt )
+{
+	float alpha = ( cam->viewport_width * 0.5f - 0.5f );
+	float beta = ( cam->viewport_height * 0.5f - 0.5f );
+
+	MAT_INIT_4X4( mt , 
+		alpha, 0, 0, 0, 
+		0, -beta, 0, 0, 
+		0, 0, 1, 0,
+		alpha, beta, 0, 1 );
+}
+
+void Build_Perspective_To_Screen_MATRIX4X4( CAMERA4DV1_PTR cam, MATRIX4X4_PTR mt )
+{
+	float alpha = ( cam->viewport_width * 0.5f - 0.5f );
+	float beta = ( cam->viewport_height * 0.5f - 0.5f );
+
+	MAT_INIT_4X4( mt , 
+		alpha, 0, 0, 0, 
+		0, -beta, 0, 0, 
+		alpha, beta, 1, 0,
+		0, 0, 0, 1 );
+}
+

@@ -38,4 +38,4 @@ FORCE_INLINE float I_fsel( float comparand, float valGE, float valLT )
 void Com_Printf( const char* fmt, ... );
 
 #define SET_BIT(va, b) ( va |= b )
-#define RESET_BIT(va, b) ( va ^= b )
+#define RESET_BIT(va, b) ( va &= (~b) )

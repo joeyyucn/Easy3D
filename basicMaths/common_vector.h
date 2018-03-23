@@ -17,6 +17,19 @@ typedef struct VECTOR2D_TYP
 	};
 } VECTOR2D, *VECTOR2D_PTR, POINT2D, *POINT2D_PTR;
 
+typedef struct VECTOR2DI_TYP
+{
+	union
+	{
+		int M[2];
+		struct
+		{
+			int x, y;
+		};
+	};
+}
+VECTOR2DI, *VECTOR2DI_PTR, POINT2DI, *POINT2DI_PTR;
+
 typedef struct VECTOR3D_TYP
 {
 	union 
@@ -28,11 +41,6 @@ typedef struct VECTOR3D_TYP
 		};
 	};
 } VECTOR3D, *VECTOR3D_PTR, POINT3D, *POINT3D_PTR;
-
-typedef struct VECTOR2DI_TYP
-{
-	int x, y;
-}VECTOR2DI, *VECTOR2DI_PTR;
 
 typedef struct VECTOR2DF_TYP
 {
@@ -190,7 +198,7 @@ FORCE_INLINE void VECTOR4D_ADD( VECTOR4D_PTR va, VECTOR4D_PTR vb, VECTOR4D_PTR v
 	vsum->x = va->x + vb->x;
 	vsum->y = va->y + vb->y;
 	vsum->z = va->z + vb->z;
-	vsum->w = va->w + vb->w;
+	vsum->w = 1;
 }
 
 FORCE_INLINE void VECTOR2D_SUB( VECTOR2D_PTR va, VECTOR2D_PTR vb, VECTOR2D_PTR vdiff )
